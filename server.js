@@ -1,7 +1,7 @@
 //Install express server
 const express = require('express');
 const path = require('path');
-const Socketio = require("socket.io")(Http);
+
 
 const app = express();
 
@@ -12,6 +12,8 @@ app.get('/*', function(req,res) {
     
 res.sendFile(path.join(__dirname,'/dist/client/index.html'));
 });
+
+const Socketio = require("socket.io")(app);
 
 class Player {
     constructor(id) {
