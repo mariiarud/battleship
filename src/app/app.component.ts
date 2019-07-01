@@ -24,7 +24,7 @@ export class AppComponent {
 	}
 
   ngOnInit(): void {
-    this.socket = io("http://localhost:3200");
+    this.socket = io(process.env.PORT);
   }
 
   ngAfterViewInit(): void {
