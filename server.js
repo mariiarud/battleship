@@ -68,12 +68,18 @@ Socketio.on("connection", socket => {
             rooms.forEach(function(room) {
             room.players.forEach(function(player){
                 if(!player.isOnline){
-                    // room.players.delete(player.id);
-                    room.players.clear();
+                    room.players.delete(player.id);
+                    
                     Socketio.emit("playerLeave", room.id);
-                    // room.players.forEach(function(playerOnline){
-                    //     room.players.delete(playerOnline.id);
-                    // });
+                    let isInGame = true;
+                    room.players.forEach(function(playerOnline){
+                        if(!playerOnline.isReady){
+                            isInGame = false;
+                        }
+                    });
+                    if(isInGame){
+                        room.players.clear();
+                    }
                 }
                 });
             });
