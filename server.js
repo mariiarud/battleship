@@ -15,9 +15,9 @@ res.sendFile(path.join(__dirname,'/dist/client/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
+const server = app.listen(process.env.PORT || 8080);
 
-const Socketio = require("socket.io")(app);
+const Socketio = require("socket.io")(server);
 // const Socketio = require("socket.io").listen(server);
 
 class Player {
