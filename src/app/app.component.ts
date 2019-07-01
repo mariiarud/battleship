@@ -57,6 +57,15 @@ export class AppComponent {
     this.socket.on("playerLeave", room=>{
       if(this.currentRoom == room){
         this.notifier.notify( "error", "Opponent left the game!" );
+          // let timeLeft: number = 2;
+          // let interval = setInterval(() => {
+          //   if(timeLeft > 0) {
+          //     timeLeft--;
+          //   } else {
+          //     this.gameStatus = "home";
+          //     clearInterval(interval);
+          //   }
+          // },1000);
       }
     });
   }
