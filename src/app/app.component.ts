@@ -54,7 +54,11 @@ export class AppComponent {
     this.socket.on("startNewGame", ()=>{
       this.gameStatus = 'start';
     });
-    
+    this.socket.on("playerLeave", room=>{
+      if(this.currentRoom == room){
+        this.notifier.notify( "error", "Opponent left the game!" );
+      }
+    });
   }
 
   joinRoom(i): void {
