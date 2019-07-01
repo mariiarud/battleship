@@ -2,7 +2,7 @@
 const express = require('express'),
     app = module.exports.app = express();
 const path = require('path');
-const Http = require("http").Server(express);
+// const Http = require("http").Server(express);
 // var http = require('http');
 
 // const app = express();
@@ -14,17 +14,10 @@ app.get('/*', function(req, res) {
 res.sendFile(path.join(__dirname,'/dist/client/index.html'));
 });
 
-var server = Http.createServer(app).listen(process.env.PORT || 8080, function(err) {
-    if (err) {
-      console.log(err);
-    } else {
-      const host = server.address().address;
-      const port = server.address().port;
-      console.log(`Server listening on ${host}:${port}`);
-    }
-  });
+// Start the app by listening on the default Heroku port
+app.listen(process.env.PORT || 8080);
 
-const Socketio = require("socket.io")(server);
+const Socketio = require("socket.io")(app);
 // const Socketio = require("socket.io").listen(server);
 
 class Player {
@@ -188,5 +181,3 @@ Socketio.on("connection", socket => {
     });
 });
 
-// Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
