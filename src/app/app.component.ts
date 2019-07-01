@@ -8,6 +8,7 @@ import { NotifierService } from 'angular-notifier';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  timeLeft: number = 2;
   title = 'Battleship';
   isCall = false;
   gameStatus = 'home';
@@ -53,6 +54,7 @@ export class AppComponent {
     this.socket.on("startNewGame", ()=>{
       this.gameStatus = 'start';
     });
+    
   }
 
   joinRoom(i): void {
