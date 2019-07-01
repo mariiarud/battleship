@@ -1,9 +1,11 @@
 //Install express server
-const express = require('express');
+const express = require('express'),
+    app = module.exports.app = express();
 const path = require('path');
+const Http = require("http").Server(Express);
 // var http = require('http');
 
-const app = express();
+// const app = express();
 
 // Serve only the static files form the dist directory
 app.use(express.static('./dist/client'));
@@ -12,9 +14,9 @@ app.get('/*', function(req,res) {
 res.sendFile(path.join(__dirname,'/dist/client/index.html'));
 });
 
-// var server = http.createServer(app);
+var server = Http.createServer(app);
 
-const Socketio = require("socket.io")(app);
+const Socketio = require("socket.io")(server);
 // const Socketio = require("socket.io").listen(server);
 
 class Player {
