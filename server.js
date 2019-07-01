@@ -10,11 +10,19 @@ const Http = require("http").Server(express);
 // Serve only the static files form the dist directory
 app.use(express.static('./dist/client'));
 
-app.get('/*', function(req,res) {
+app.get('/*', function(req, res) {
 res.sendFile(path.join(__dirname,'/dist/client/index.html'));
 });
 
-var server = Http.createServer(app);
+var server = Http.createServer(app).listen(process.env.PORT || 8080, function(err) {
+    if (err) {
+      console.log(err);
+    } else {
+      const host = server.address().address;
+      const port = server.address().port;
+      console.log(`Server listening on ${host}:${port}`);
+    }
+  });
 
 const Socketio = require("socket.io")(server);
 // const Socketio = require("socket.io").listen(server);
