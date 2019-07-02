@@ -104,7 +104,7 @@ export class OnGameComponent implements OnInit {
             break;
           case (3):
             if(document.getElementById(id).textContent ==""){
-              document.getElementById(id).style.cssText = "font-size: 1.2rem; line-height: 0.3em; color: #0c74eb; ";
+              document.getElementById(id).style.cssText = "font-size: 8px; line-height: 0.3em; color: #0c74eb; ";
               document.getElementById(id).innerHTML += '●';
             }
               break;
