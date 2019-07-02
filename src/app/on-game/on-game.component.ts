@@ -104,7 +104,7 @@ export class OnGameComponent implements OnInit {
             break;
           case (3):
             if(document.getElementById(id).textContent ==""){
-              document.getElementById(id).style.cssText = "font-size: 6px; line-height: 0.3em; color: #0c74eb; ";
+              document.getElementById(id).style.cssText = "font-size: 1.1rem; line-height: 0.3em; color: #0c74eb; ";
               document.getElementById(id).innerHTML += '●';
             }
               break;
@@ -161,7 +161,7 @@ export class OnGameComponent implements OnInit {
           if(this.realEnemyBoard[i][j]<3){
             this.realEnemyBoard[i][j]=3;
             this.myEnemyBoard[i][j]=3;
-            document.getElementById(id).style.cssText = "font-size: 1.2rem; line-height: 0.4em; color: #0c74eb; ";
+            document.getElementById(id).style.cssText = "font-size: 1.1rem; line-height: 0.4em; color: #0c74eb; ";
             document.getElementById(id).innerHTML += '●';
             this.socket.emit("missShot", this.currentRoom, this.playerId, this.realEnemyBoard);
             this.socket.emit("changeTurn", this.currentRoom);
